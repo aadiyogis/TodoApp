@@ -16,7 +16,7 @@ public class OwnerController {
     private final OwnerService ownerService;
 
     @PostMapping("/")
-    public OwnerDto createOwner(OwnerDto ownerDto) {
+    public OwnerDto createOwner(@RequestBody OwnerDto ownerDto) {
         log.info("OwnerController -- createOwner -- started");
         return ownerService.createOwner(ownerDto);
     }

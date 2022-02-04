@@ -9,6 +9,7 @@ import org.learning.todolist.repository.OwnerRepository;
 import org.learning.todolist.service.OwnerService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ public class OwnerServiceImpl implements OwnerService {
     private final OwnerMapper ownerMapper;
 
     @Override
+    @Transactional
     public OwnerDto createOwner(OwnerDto ownerDto) {
         Owner owner = ownerMapper.mapOwnerDtoToOwner(ownerDto);
         Owner savedOwner = ownerRepository.saveAndFlush(owner);
@@ -28,6 +30,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
+    @Transactional
     public List<OwnerDto> getAll() {
         List<Owner> ownerList = ownerRepository.findAll();
         List<OwnerDto> ownerDtos = new ArrayList<>();
@@ -39,6 +42,7 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
+    @Transactional
     public OwnerDto getOwner(Long id) {
         OwnerDto ownerDto = null;
         Optional<Owner> ownerOptional = ownerRepository.findById(id);
