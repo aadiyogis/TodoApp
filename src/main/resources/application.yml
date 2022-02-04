@@ -6,6 +6,9 @@ spring:
       enabled: true
   datasource:
     url: jdbc:h2:mem:testDb
+  jpa:
+    defer-datasource-initialization: true
+
 logging:
   level:
     org.learning: DEBUG
